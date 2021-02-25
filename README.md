@@ -5,3 +5,5 @@ Initially, the player has 3 lives; a life is lost if the ball hits the bottom of
 In this version of Brick Breaker, it is possible to shoot flaming fireballs and play with more than one ball if the player gets power up.
 
 ![brick](https://user-images.githubusercontent.com/61186198/109146081-69362580-7774-11eb-8c71-3a5b1c193fe4.gif)
+
+![editor](https://user-images.githubusercontent.com/61186198/109146189-8cf96b80-7774-11eb-98c7-c43ff3697dc8.gif)
