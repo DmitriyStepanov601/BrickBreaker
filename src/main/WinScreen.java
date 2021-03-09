@@ -1,7 +1,7 @@
 package main;
 import levelfiles.Files;
 import levelfiles.Level;
-import listeners.MouseHandler;
+import handlers.MouseHandler;
 import java.awt.*;
 
 /**
@@ -43,8 +43,8 @@ public class WinScreen {
 		g.drawImage(background, 0, 0, BrickBreaker.WIDTH, BrickBreaker.HEIGHT, null);
 		g.setColor(Color.BLACK);
 		g.setFont(Controller.bigFont);
-
-		g.drawString("You Win!!", BrickBreaker.WIDTH / 2 - g.getFontMetrics().stringWidth("You Win!!") / 2, 150);
+		g.drawString("You Win!!", BrickBreaker.WIDTH / 2 - g.getFontMetrics()
+				.stringWidth("You Win!!") / 2, 150);
 		g.drawString("Score: " + Controller.score, BrickBreaker.WIDTH/2 - g.getFontMetrics().
 				stringWidth("Score" + Controller.score) / 2, 225);
 
@@ -56,7 +56,6 @@ public class WinScreen {
 		}
 
 		g.drawRect(mainMenu.x, mainMenu.y, mainMenu.width, mainMenu.height);
-
 		if(mainMenu.contains(Controller.mousePoint)) {
 			g.setColor(new Color(200, 200, 200, 100));
 			g.fillRect(mainMenu.x, mainMenu.y, mainMenu.width, mainMenu.height);

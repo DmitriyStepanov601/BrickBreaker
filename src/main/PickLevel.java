@@ -1,7 +1,7 @@
 package main;
 import levelfiles.Files;
 import levelfiles.Level;
-import listeners.MouseHandler;
+import handlers.MouseHandler;
 import java.awt.*;
 
 /**
@@ -14,28 +14,44 @@ public class PickLevel {
 	private final Image locked;
 	private int page = 1;
 
-	Rectangle[] levels = {
-			new Rectangle(63, 120, 75, 75), new Rectangle(163, 120, 75, 75),
-			new Rectangle(263, 120, 75, 75), new Rectangle(363, 120, 75, 75),
-            new Rectangle(463, 120, 75, 75), new Rectangle(563, 120, 75, 75),
-			new Rectangle(63, 220, 75, 75), new Rectangle(163, 220, 75, 75),
-			new Rectangle(263, 220, 75, 75), new Rectangle(363, 220, 75, 75),
-            new Rectangle(463, 220, 75, 75), new Rectangle(563, 220, 75, 75),
-            new Rectangle(63, 320, 75, 75), new Rectangle(163, 320, 75, 75),
-            new Rectangle(263, 320, 75, 75), new Rectangle(363, 320, 75, 75),
-            new Rectangle(463, 320, 75, 75), new Rectangle(563, 320, 75, 75),
-			new Rectangle(63, 420, 75, 75), new Rectangle(163, 420, 75, 75),
-			new Rectangle(263, 420, 75, 75), new Rectangle(363, 420, 75, 75),
-			new Rectangle(463, 420, 75, 75), new Rectangle(563, 420, 75, 75),
-			new Rectangle(63, 520, 75, 75), new Rectangle(163, 520, 75, 75),
-			new Rectangle(263, 520, 75, 75), new Rectangle(363, 520, 75, 75),
-			new Rectangle(463, 520, 75, 75), new Rectangle(563, 520, 75, 75)
+	private final Rectangle[] levels = {
+			new Rectangle(63, 120, 75, 75),
+			new Rectangle(163, 120, 75, 75),
+			new Rectangle(263, 120, 75, 75),
+			new Rectangle(363, 120, 75, 75),
+            new Rectangle(463, 120, 75, 75),
+			new Rectangle(563, 120, 75, 75),
+			new Rectangle(63, 220, 75, 75),
+			new Rectangle(163, 220, 75, 75),
+			new Rectangle(263, 220, 75, 75),
+			new Rectangle(363, 220, 75, 75),
+            new Rectangle(463, 220, 75, 75),
+			new Rectangle(563, 220, 75, 75),
+            new Rectangle(63, 320, 75, 75),
+			new Rectangle(163, 320, 75, 75),
+            new Rectangle(263, 320, 75, 75),
+			new Rectangle(363, 320, 75, 75),
+            new Rectangle(463, 320, 75, 75),
+			new Rectangle(563, 320, 75, 75),
+			new Rectangle(63, 420, 75, 75),
+			new Rectangle(163, 420, 75, 75),
+			new Rectangle(263, 420, 75, 75),
+			new Rectangle(363, 420, 75, 75),
+			new Rectangle(463, 420, 75, 75),
+			new Rectangle(563, 420, 75, 75),
+			new Rectangle(63, 520, 75, 75),
+			new Rectangle(163, 520, 75, 75),
+			new Rectangle(263, 520, 75, 75),
+			new Rectangle(363, 520, 75, 75),
+			new Rectangle(463, 520, 75, 75),
+			new Rectangle(563, 520, 75, 75)
 	};
 
-	Rectangle userLevel = new Rectangle(50, 630, 600, 25);
-	Rectangle[] arrows = {
+	private final Rectangle userLevel = new Rectangle(50, 630, 600, 25);
+	private final Rectangle[] arrows = {
 	        new Rectangle(5, BrickBreaker.HEIGHT - 80, 50, 50),
-            new Rectangle(BrickBreaker.WIDTH - 60, BrickBreaker.HEIGHT - 80, 50, 50)
+            new Rectangle(BrickBreaker.WIDTH - 60, BrickBreaker.HEIGHT - 80,
+					50, 50)
 	};
 
 	/**
@@ -49,7 +65,7 @@ public class PickLevel {
 		Level.lockedLevels = Files.readFile(Files.LEVELPATH);
 	}
 
-	public void tick(){
+	public void tick() {
 		if(MouseHandler.MOUSEDOWN) {
 			for(int i = 0; i < levels.length; i++) {
 				if(levels[i].contains(Controller.mousePoint)) {

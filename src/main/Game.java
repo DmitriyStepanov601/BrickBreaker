@@ -1,14 +1,14 @@
 package main;
 import java.awt.*;
 import javax.swing.JPanel;
-import levelfiles.Files;
+
 import levelfiles.Level;
-import listeners.KeyHandler;
-import listeners.MouseHandler;
-import parts.Ball;
-import parts.Brick;
-import parts.Paddle;
-import parts.Powerup;
+import handlers.KeyHandler;
+import handlers.MouseHandler;
+import gameobjects.Ball;
+import gameobjects.Brick;
+import gameobjects.Paddle;
+import gameobjects.Powerup;
 
 /**
  * A class that describes the logic of the game
@@ -31,7 +31,8 @@ public class Game extends JPanel {
  	private final boolean debug = false;
  	private final int level;
  	private final Rectangle back = new Rectangle(0, BrickBreaker.HEIGHT - 60, 30, 30);
-	private final Rectangle back2 = new Rectangle(BrickBreaker.WIDTH - 40, BrickBreaker.HEIGHT - 60, 30, 30);
+	private final Rectangle back2 = new Rectangle(BrickBreaker.WIDTH - 40,
+			BrickBreaker.HEIGHT - 60, 30, 30);
 	private final Image backArrow;
 	private final Image backArrow2;
 
@@ -46,8 +47,8 @@ public class Game extends JPanel {
 
 		backArrow = new ImageLoader(ImageLoader.arrow).getImage();
 		backArrow2 = new ImageLoader(ImageLoader.arrow2).getImage();
-		balls[0] = new Ball(paddle.getX() + paddle.width / 2 - 12, paddle.getY() - paddle.height / 2 - 10,
-				false);
+		balls[0] = new Ball(paddle.getX() + paddle.width / 2 - 12,
+				paddle.getY() - paddle.height / 2 - 10, false);
 
 		totalBallCount = 1;
 		this.level = level;
@@ -60,10 +61,11 @@ public class Game extends JPanel {
 				}
 			}
 		}
+
 		init();
 	}
 
-	public void init() {
+	private void init() {
 		int count = 0;
 		lives = new ImageLoader(ImageLoader.ball).getImage();
 		bricks = new Brick[96];
@@ -213,7 +215,8 @@ public class Game extends JPanel {
 		for (int[] gridPo : gridPos) {
 			for (int j = 0; j < gridPos[0].length; j++) {
 				if (gridPo[j] > 0) {
-					g.drawImage(bricks[count].getImage(), bricks[count].getX(), bricks[count].getY(), null);
+					g.drawImage(bricks[count].getImage(), bricks[count].getX(),
+							bricks[count].getY(), null);
 				}
 				count++;
 			}

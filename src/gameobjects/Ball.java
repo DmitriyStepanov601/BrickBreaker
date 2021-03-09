@@ -1,4 +1,4 @@
-package parts;
+package gameobjects;
 import main.BrickBreaker;
 import main.ImageLoader;
 import java.awt.*;
@@ -11,9 +11,9 @@ import java.util.TimerTask;
  * @author Dmitriy Stepanov
  */
 public class Ball {
-	public ImageLoader loader;
-	public int width = 23;
-	public int height = 23;
+	private ImageLoader loader;
+	private final int width = 23;
+	private final int height = 23;
 	private int x;
 	private int y;
 
@@ -22,10 +22,10 @@ public class Ball {
 	private final int dir = 0;
 	private final int speed;
 
-	public Rectangle bounds;
+	private Rectangle bounds;
 	private final Random rand;
 	private final Timer timer;
-	public boolean onFire = false;
+	private boolean onFire = false;
 	private int fireSec = 0;
 
 	/**
@@ -93,7 +93,6 @@ public class Ball {
 
 		if (y + dy < 0 || y + height + dy > BrickBreaker.HEIGHT) {
 			dy *= -1;
-
 			if(dx == 0) {
 				dx = 1.5;
 			}

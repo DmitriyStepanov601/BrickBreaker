@@ -1,7 +1,7 @@
 package main;
 import levelfiles.Files;
-import listeners.KeyHandler;
-import listeners.MouseHandler;
+import handlers.KeyHandler;
+import handlers.MouseHandler;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,8 +11,6 @@ import java.awt.image.BufferedImage;
  * @author Dmitriy Stepanov
  */
 public class Controller extends JPanel implements Runnable {
-
-	// An enum that describes the state of the game
 	public enum STATE {
 		CREATELEVEL, GAME, GAMEOVER, MENU, PICKLEVEL, PICKUSERLEVEL, WINSCREEN
 	}
@@ -101,8 +99,8 @@ public class Controller extends JPanel implements Runnable {
 				pickLevel.render(g);
 				break;
 			case GAME:
-					game.tick();
-					game.render(g);
+				game.tick();
+				game.render(g);
 				break;
 			case GAMEOVER:
 				gameOver.tick();
@@ -134,9 +132,11 @@ public class Controller extends JPanel implements Runnable {
 		if(state == STATE.MENU) {
 			menu = new MainMenu();
 		}
+
 		if(state == STATE.GAMEOVER) {
 			gameOver = new GameOver();
 		}
+
 		if(state == STATE.WINSCREEN) {
 			winScreen = new WinScreen();
 		}
@@ -147,6 +147,7 @@ public class Controller extends JPanel implements Runnable {
 			score = 0;
 			game = new Game(level);
 		}
+
 		if(state == Controller.STATE.CREATELEVEL) {
 			createLevel = new CreateLevel(level);
 		}

@@ -1,8 +1,8 @@
 package main;
-import listeners.MouseHandler;
-import parts.Ball;
-import parts.Brick;
-import parts.Paddle;
+import handlers.MouseHandler;
+import gameobjects.Ball;
+import gameobjects.Brick;
+import gameobjects.Paddle;
 
 import java.awt.*;
 
@@ -18,7 +18,6 @@ public class MainMenu {
 	private final Paddle paddle;
 	private Ball ball;
 	private final Brick[] bricks;
-
 	private final int[][] gridPos = {
 			{7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
 			{6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
@@ -36,7 +35,8 @@ public class MainMenu {
 		titleScreenForeground = new ImageLoader(ImageLoader.titleForeground).getImage();
 		titleScreenBackground = new ImageLoader(ImageLoader.titleScreenBackground).getImage();
 		paddle = new Paddle(BrickBreaker.WIDTH / 2 + 50, 640);
-		ball = new Ball(paddle.getX() + paddle.width / 2 - 12, paddle.getY() - paddle.height / 2 - 10, false);
+		ball = new Ball(paddle.getX() + paddle.width / 2 - 12,
+				paddle.getY() - paddle.height / 2 - 10, false);
 		bricks = new Brick[66];
 		int count = 0;
 
@@ -52,6 +52,7 @@ public class MainMenu {
 		if(bound.contains(Controller.mousePoint) && MouseHandler.MOUSEDOWN) {
 			Controller.switchStates(Controller.STATE.PICKLEVEL);
 		}
+
 		tickGame();
 	}
 
@@ -61,7 +62,8 @@ public class MainMenu {
 		ball.checkPaddleCollision(paddle);
 
 		if(ball.getY() > BrickBreaker.HEIGHT - 50) {
-			ball = new Ball(paddle.getX() + paddle.width / 2 - 12, paddle.getY() - paddle.height / 2 - 10,
+			ball = new Ball(paddle.getX() + paddle.width / 2 - 12,
+					paddle.getY() - paddle.height / 2 - 10,
 						false);
 		}
 
@@ -69,13 +71,15 @@ public class MainMenu {
 			paddle.moveLeft();
 		}
 
-		if((ball.getX() > paddle.getX() + paddle.getWidth() / 2) && paddle.getX() + paddle.getWidth() < 630) {
+		if((ball.getX() > paddle.getX() + paddle.getWidth() / 2) &&
+				paddle.getX() + paddle.getWidth() < 630) {
 			paddle.moveRight();
 		}
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(titleScreenBackground, 0, 0, BrickBreaker.WIDTH, BrickBreaker.HEIGHT, null);
+		g.drawImage(titleScreenBackground, 0, 0, BrickBreaker.WIDTH,
+				BrickBreaker.HEIGHT, null);
 		g.setColor(Color.black);
 
 		if (bound.contains(Controller.mousePoint)) {
@@ -83,11 +87,11 @@ public class MainMenu {
 		}
 
 		int count = 0;
-
 		for (int[] gridPo : gridPos) {
 			for (int j = 0; j < gridPos[0].length; j++) {
 				if (gridPo[j] > 0) {
-					g.drawImage(bricks[count].getImage(), bricks[count].getX(), bricks[count].getY(), null);
+					g.drawImage(bricks[count].getImage(), bricks[count].getX(),
+							bricks[count].getY(), null);
 				}
 				count++;
 			}
@@ -95,6 +99,7 @@ public class MainMenu {
 
 		g.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(), null);
 		g.drawImage(ball.getImage(), ball.getX(), ball.getY(), null);
-		g.drawImage(titleScreenForeground, 0, 0, BrickBreaker.WIDTH, BrickBreaker.HEIGHT, null);
+		g.drawImage(titleScreenForeground, 0, 0, BrickBreaker.WIDTH,
+				BrickBreaker.HEIGHT, null);
 	}
 }

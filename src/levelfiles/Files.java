@@ -14,14 +14,13 @@ import java.util.Scanner;
 public class Files {
 	private static final String filePath = getDefaultDirectory() + "/BrickBreaker/";
 	public static String LEVELPATH = getDefaultDirectory() + "/BrickBreaker/Levels.txt";
-	public static Scanner scanner = null;
+	private static Scanner scanner = null;
 	
 	public Files() {}
 
 	public static void init() {
 		createDir(filePath);
 		createFile(LEVELPATH);
-
 		for(int i = 0; i < 30; i++) {
 			createLevel(filePath + "CustomLevel" + i + ".txt");
 		}
@@ -39,7 +38,6 @@ public class Files {
 			}
 
 			int line = 0;
-
 			while (true) {
 				assert scanner != null;
 				if (!scanner.hasNextBoolean()) break;
@@ -124,7 +122,6 @@ public class Files {
 				}
 
 				boolean[] lockedLevels = new boolean[Level.MAX_LEVEL + 1];
-
 				for(int i = 1; i < lockedLevels.length; i++) {
 					lockedLevels[i] = true;
 				}
@@ -146,7 +143,6 @@ public class Files {
 			}
 
 			int[][] grid = new int[8][12];
-
 			for (int[] ints : grid) {
 				Arrays.fill(ints, 0);
 			}
@@ -158,7 +154,6 @@ public class Files {
 	public static void createDir(String filePath) {
 		File path = new File(filePath);
 		boolean isCreateDirectory = path.exists();
-
 		if (!isCreateDirectory) {
 			path.mkdir();
 		}
@@ -202,7 +197,6 @@ public class Files {
 	public static void deleteFile(String filePath) {
 		File file = new File(filePath);
 		boolean isDeleteFile = file.exists();
-
 		if (isDeleteFile) {
 			file.delete();
 		}
@@ -210,15 +204,9 @@ public class Files {
 
 	public static String getDefaultDirectory() {
 		String OS = System.getProperty("os.name").toUpperCase();
-
 		if (OS.contains("WIN")) {
 			return System.getenv("APPDATA");
 		}
-
-		if (OS.contains("MAC")) {
-			return System.getProperty("user.home") + "/Library/Application Support";
-		}
-
 		return System.getProperty("user.home");
 	}
 }

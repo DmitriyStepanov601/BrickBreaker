@@ -1,4 +1,4 @@
-package parts;
+package gameobjects;
 import main.BrickBreaker;
 import main.ImageLoader;
 import java.awt.*;

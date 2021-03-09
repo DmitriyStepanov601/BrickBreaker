@@ -6,20 +6,20 @@ package levelfiles;
  */
 public class Level {
 	public static int MAX_LEVEL = 45;
-	public static int[][][] levels = new int[46][8][12];
-	public static int[][][] userLevels = new int[30][8][12];
+	private static final int[][][] levels = new int[46][8][12];
+	private static final int[][][] userLevels = new int[30][8][12];
 	public static boolean[] lockedLevels = new boolean[MAX_LEVEL + 1];
 
-	public static int[][] getLevel(int level){
+	public static int[][] getLevel(int level) {
 		if(level <= MAX_LEVEL) {
 			fillLevels();
 			return levels[level];
 		} else {
-			return Files.readLevel(level-47);
+			return Files.readLevel(level - 47);
 		}
 	}
 
-	public static void fillLevels() {
+	private static void fillLevels() {
 		levels[0] = level0;
 		levels[1] = level1;
 		levels[2] = level2;

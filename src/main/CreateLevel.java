@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import levelfiles.Files;
-import listeners.MouseHandler;
-import parts.Brick;
+import handlers.MouseHandler;
+import gameobjects.Brick;
 
 /**
  * A class that describes how to create a level
@@ -52,7 +52,6 @@ public class CreateLevel {
 		}
 
 		int prevX = 80;
-
 		for (int i = 0; i < shopBricks.length; i++) {
 			shopBricks[i] = new Brick(prevX, 680, i + 1);
 			prevX += shopBricks[0].getWidth() + 7;
@@ -65,8 +64,10 @@ public class CreateLevel {
 				mouseBrick.setX(Controller.mousePoint.x - mouseBrick.getWidth() / 2);
 				mouseBrick.setY(Controller.mousePoint.y - mouseBrick.getHeight() / 2);
 			} else {
-				mouseBrick.setX((Controller.mousePoint.x / mouseBrick.getWidth()) * mouseBrick.getWidth());
-				mouseBrick.setY((Controller.mousePoint.y / mouseBrick.getHeight()) * mouseBrick.getHeight());
+				mouseBrick.setX((Controller.mousePoint.x /
+						mouseBrick.getWidth()) * mouseBrick.getWidth());
+				mouseBrick.setY((Controller.mousePoint.y /
+						mouseBrick.getHeight()) * mouseBrick.getHeight());
 			}
 		}
 
@@ -80,7 +81,8 @@ public class CreateLevel {
 						&& Controller.mousePoint.x < shopBrick.getX() + shopBrick.getWidth()) {
 					if (Controller.mousePoint.y > shopBrick.getY()
 							&& Controller.mousePoint.y < shopBrick.getY() + shopBrick.getHeight()) {
-						mouseBrick = new Brick(Controller.mousePoint.x, Controller.mousePoint.y, shopBrick.level);
+						mouseBrick = new Brick(Controller.mousePoint.x,
+								Controller.mousePoint.y, shopBrick.level);
 						isErasing = false;
 					}
 				}
@@ -129,8 +131,10 @@ public class CreateLevel {
 				if (isErasing) {
 					gridPos[(tempY)][tempX] = 0;
 					bricks[tempX + (tempY * 12)] = new Brick(
-							(Controller.mousePoint.x / mouseBrick.getWidth()) * mouseBrick.getWidth(),
-							(Controller.mousePoint.y / mouseBrick.getHeight()) * mouseBrick.getHeight(), 0);
+							(Controller.mousePoint.x /
+									mouseBrick.getWidth()) * mouseBrick.getWidth(),
+							(Controller.mousePoint.y /
+									mouseBrick.getHeight()) * mouseBrick.getHeight(), 0);
 				} else {
 					gridPos[tempY][tempX] = mouseBrick.level;
 					bricks[tempX + (tempY * 12)] = new Brick(
@@ -155,7 +159,6 @@ public class CreateLevel {
 		}
 
 		int count = 0;
-
 		for (int[] gridPo : gridPos) {
 			for (int j = 0; j < gridPos[0].length; j++) {
 				if (gridPo[j] > 0) {
@@ -177,11 +180,14 @@ public class CreateLevel {
 			}
 		}
 
-		g.drawImage(backArrow, gameOptions[1].x, gameOptions[1].y, gameOptions[1].width, gameOptions[1].height,
+		g.drawImage(backArrow, gameOptions[1].x, gameOptions[1].y, gameOptions[1].width,
+				gameOptions[1].height,
 				null);
-		g.drawImage(paintBucket, gameOptions[2].x, gameOptions[2].y, gameOptions[2].width, gameOptions[2].height,
+		g.drawImage(paintBucket, gameOptions[2].x, gameOptions[2].y, gameOptions[2].width,
+				gameOptions[2].height,
 				null);
-		g.drawImage(eraser, gameOptions[3].x, gameOptions[3].y, gameOptions[3].width, gameOptions[3].height,
+		g.drawImage(eraser, gameOptions[3].x, gameOptions[3].y, gameOptions[3].width,
+				gameOptions[3].height,
 				null);
 
 		for (Brick shopBrick : shopBricks) {
@@ -192,9 +198,11 @@ public class CreateLevel {
 		if (isPainting) {
 			g.drawRect(gameOptions[2].x, gameOptions[2].y, gameOptions[2].width, gameOptions[2].height);
 		}
+
 		if (isErasing) {
 			g.drawRect(gameOptions[3].x, gameOptions[3].y, gameOptions[3].width, gameOptions[3].height);
 		}
+
 		if (mouseBrick != null) {
 			g.drawImage(mouseBrick.getImage(), mouseBrick.getX(), mouseBrick.getY(), mouseBrick.getWidth(),
 					mouseBrick.getHeight(), null);

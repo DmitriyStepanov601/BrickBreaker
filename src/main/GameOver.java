@@ -1,5 +1,5 @@
 package main;
-import listeners.MouseHandler;
+import handlers.MouseHandler;
 import java.awt.*;
 
 /**
@@ -29,9 +29,10 @@ public class GameOver {
 		g.drawImage(background, 0, 0, BrickBreaker.WIDTH, BrickBreaker.HEIGHT, null);
 		g.setColor(Color.black);
 		g.setFont(Controller.bigFont);
-		g.drawString("You Lose", BrickBreaker.WIDTH / 2 - g.getFontMetrics().stringWidth("You Lose") / 2, 150);
-		g.drawString("Score: " + Controller.score, BrickBreaker.WIDTH / 2 - g.getFontMetrics().stringWidth("Score"
-				+ Controller.score) / 2, 225);
+		g.drawString("You Lose", BrickBreaker.WIDTH / 2 - g.getFontMetrics().
+				stringWidth("You Lose") / 2, 150);
+		g.drawString("Score: " + Controller.score, BrickBreaker.WIDTH / 2 - g.getFontMetrics()
+				.stringWidth("Score" + Controller.score) / 2, 225);
 		g.drawRect(mainMenu.x, mainMenu.y, mainMenu.width, mainMenu.height);
 
 		if(mainMenu.contains(Controller.mousePoint)) {
