@@ -1,5 +1,5 @@
 package main;
-import listeners.MouseHandler;
+import handlers.MouseHandler;
 import java.awt.*;
 
 /**
@@ -9,26 +9,42 @@ import java.awt.*;
 public class PickUserLevel {
 	private final Image arrow;
 
-	Rectangle[] levels = {
-			new Rectangle(60, 130, 75, 75), new Rectangle(160, 130, 75, 75),
-			new Rectangle(260, 130, 75, 75), new Rectangle(360, 130, 75, 75),
-			new Rectangle(460, 130, 75, 75), new Rectangle(560, 130, 75, 75),
-			new Rectangle(60, 230, 75, 75), new Rectangle(160, 230, 75, 75),
-			new Rectangle(260, 230, 75, 75), new Rectangle(360, 230, 75, 75),
-			new Rectangle(460, 230, 75, 75), new Rectangle(560, 230, 75, 75),
-			new Rectangle(60, 330, 75, 75), new Rectangle(160, 330, 75, 75),
-			new Rectangle(260, 330, 75, 75), new Rectangle(360, 330, 75, 75),
-			new Rectangle(460, 330, 75, 75), new Rectangle(560, 330, 75, 75),
-			new Rectangle(60, 430, 75, 75), new Rectangle(160, 430, 75, 75),
-			new Rectangle(260, 430, 75, 75), new Rectangle(360, 430, 75, 75),
-			new Rectangle(460, 430, 75, 75), new Rectangle(560, 430, 75, 75),
-			new Rectangle(60, 530, 75, 75), new Rectangle(160, 530, 75, 75),
-			new Rectangle(260, 530, 75, 75), new Rectangle(360, 530, 75, 75),
-			new Rectangle(460, 530, 75, 75), new Rectangle(560, 530, 75, 75)
+	private final Rectangle[] levels = {
+			new Rectangle(60, 130, 75, 75),
+			new Rectangle(160, 130, 75, 75),
+			new Rectangle(260, 130, 75, 75),
+			new Rectangle(360, 130, 75, 75),
+			new Rectangle(460, 130, 75, 75),
+			new Rectangle(560, 130, 75, 75),
+			new Rectangle(60, 230, 75, 75),
+			new Rectangle(160, 230, 75, 75),
+			new Rectangle(260, 230, 75, 75),
+			new Rectangle(360, 230, 75, 75),
+			new Rectangle(460, 230, 75, 75),
+			new Rectangle(560, 230, 75, 75),
+			new Rectangle(60, 330, 75, 75),
+			new Rectangle(160, 330, 75, 75),
+			new Rectangle(260, 330, 75, 75),
+			new Rectangle(360, 330, 75, 75),
+			new Rectangle(460, 330, 75, 75),
+			new Rectangle(560, 330, 75, 75),
+			new Rectangle(60, 430, 75, 75),
+			new Rectangle(160, 430, 75, 75),
+			new Rectangle(260, 430, 75, 75),
+			new Rectangle(360, 430, 75, 75),
+			new Rectangle(460, 430, 75, 75),
+			new Rectangle(560, 430, 75, 75),
+			new Rectangle(60, 530, 75, 75),
+			new Rectangle(160, 530, 75, 75),
+			new Rectangle(260, 530, 75, 75),
+			new Rectangle(360, 530, 75, 75),
+			new Rectangle(460, 530, 75, 75),
+			new Rectangle(560, 530, 75, 75)
 	};
 
-	Rectangle userLevel = new Rectangle(50, 390, 380, 25);
-	Rectangle[] arrows = { new Rectangle(5, BrickBreaker.HEIGHT - 80, 50, 50) };
+	private final Rectangle userLevel = new Rectangle(50, 390, 380, 25);
+	private final Rectangle[] arrows = { new Rectangle(5, BrickBreaker.HEIGHT - 80,
+			50, 50) };
 
 	/**
 	 * Constructor - creating a new user level
@@ -59,7 +75,6 @@ public class PickUserLevel {
 	public void render(Graphics g) {
 		g.setFont(Controller.bigFont);
 		Graphics2D g2 = (Graphics2D)g;
-
 		GradientPaint blueToBlack = new GradientPaint(0, 0, Color.CYAN, 0, 600, Color.BLUE);
 		g2.setPaint(blueToBlack);
 		g.fillRect(0, 0, BrickBreaker.WIDTH, BrickBreaker.HEIGHT);
@@ -78,6 +93,7 @@ public class PickUserLevel {
 
 			g.drawRect(levels[i].x, levels[i].y, levels[i].width, levels[i].height);
 		}
+
 		for(int i = 0; i < arrows.length; i++) {
 			if(i == 0) {
 				g.drawImage(arrow, arrows[i].x, arrows[i].y, arrows[i].width, arrows[i].height, null);

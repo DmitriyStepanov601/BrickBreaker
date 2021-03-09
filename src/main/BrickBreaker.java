@@ -16,7 +16,7 @@ public class BrickBreaker extends JFrame {
 	 * Constructor - create a new interface of the game
 	 * @see BrickBreaker#BrickBreaker()
 	 */
-	public BrickBreaker(){
+	public BrickBreaker() {
 		setTitle("Brick Breaker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

@@ -1,4 +1,4 @@
-package parts;
+package gameobjects;
 import main.BrickBreaker;
 import main.ImageLoader;
 import java.awt.*;
@@ -8,13 +8,13 @@ import java.awt.*;
  * @author Dmitriy Stepanov
  */
 public class Paddle {
-	ImageLoader loader;
+	private final ImageLoader loader;
 	public Rectangle bounds;
-	public int width = 100;
-	public int height = 30;
+	private final int width = 100;
+	private final int height = 30;
 	private int x;
 	private final int y;
-	public int moveSpeed = 10;
+	private final int moveSpeed = 10;
 
 	/**
 	 * Constructor - creating a new ball

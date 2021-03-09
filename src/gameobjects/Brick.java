@@ -1,4 +1,4 @@
-package parts;
+package gameobjects;
 import main.BrickBreaker;
 import main.ImageLoader;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Dmitriy Stepanov
  */
 public class Brick {
-	public ImageLoader loader;
+	private final ImageLoader loader;
 	private final int width = 50;
 	private final int height = 25;
 	private int x;
@@ -77,10 +77,8 @@ public class Brick {
 	public void hasCollided() {
 		if(level >= 1) {
 			level--;
-
 			if(level == 0) {
 				hasDied = true;
-
 				if(hasPowerup() > 0) {
 					dropPowerup = true;
 				}
@@ -91,7 +89,6 @@ public class Brick {
 	public void destroyed(){
 		level = 0;
 		hasDied = true;
-
 		if(hasPowerup() > 0) {
 			dropPowerup = true;
 		}
